@@ -1,17 +1,17 @@
 const Courses = require('../module/Courses');
 const { multipliedMongooseToObject } = require('../../util/mongoose');
-class HomeController {
-    // [GET] --- /
-    async index(req, res, next) {
+class MeControllers {
+    // [GET] /me/stored/courses
+    async storedCourse(req, res, next) {
         try {
             const instance = await Courses.find();
             const course = multipliedMongooseToObject(instance);
 
-            res.render('home', { course });
+            res.render('me/storedCourse', { course });
         } catch (err) {
-            next(err);
+            res.json(err);
         }
     }
 }
 
-module.exports = new HomeController();
+module.exports = new MeControllers();

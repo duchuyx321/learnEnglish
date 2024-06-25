@@ -1,1 +1,71 @@
-<h1>Header</h1>
+<div class='container-fluid p-0'>
+    <nav class='navbar navbar-expand-lg container-nav'>
+        <div class='container'>
+            <a class='navbar-brand' href='/'>
+                <img
+                    src='https://res.cloudinary.com/dglgdtov0/image/upload/v1719301569/logo_jdvjvg.png'
+                    alt='Logo'
+                    class='Logo'
+                />
+            </a>
+            <button
+                class='navbar-toggler'
+                type='button'
+                data-bs-toggle='collapse'
+                data-bs-target='#navbarSupportedContent'
+                aria-controls='navbarSupportedContent'
+                aria-expanded='false'
+                aria-label='Toggle navigation'
+            >
+                <span class='navbar-toggler-icon'></span>
+            </button>
+            <div
+                class='collapse navbar-collapse justify-content-between'
+                id='navbarSupportedContent'
+            >
+                <form class='d-flex'>
+                    <input
+                        class='form-control me-2'
+                        type='search'
+                        placeholder='Search'
+                        aria-label='Search'
+                    />
+                    <button
+                        class='btn btn-outline-success'
+                        type='submit'
+                    >Search</button>
+                </form>
+                <ul class='navbar-nav mb-2 mb-lg-0'>
+                    <li class='nav-item dropdown'>
+                        <a
+                            class='nav-link dropdown-toggle'
+                            href='#'
+                            id='navbarDropdown'
+                            role='button'
+                            data-bs-toggle='dropdown'
+                            aria-expanded='false'
+                        >
+                            Dropdown
+                        </a>
+                        <ul
+                            class='dropdown-menu'
+                            aria-labelledby='navbarDropdown'
+                        >
+                            <li><a
+                                    class='dropdown-item'
+                                    href='course/store'
+                                >Thêm Khóa Học</a></li>
+                            <li><a
+                                    class='dropdown-item'
+                                    href='/me/stored/courses'
+                                >Khóa Học Đã Đăng</a></li>
+                            <li><hr class='dropdown-divider' /></li>
+                            <li><a class='dropdown-item' href='#'>Something else
+                                    here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

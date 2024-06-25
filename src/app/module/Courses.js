@@ -1,27 +1,30 @@
 const mongoose = require('mongoose');
-const { schema } = mongoose.Schema;
 const slug = require('mongoose-slug-updater');
 const mongooseDelete = require('mongoose-delete');
 const sequence = require('mongoose-sequence')(mongoose);
 
+const schema = mongoose.Schema;
+
 const Courses = new schema(
     {
-        _id: { type: Number, required, unique },
-        name: { type: String, required },
+        _id: { type: Number },
+        name: { type: String },
         description: { type: String, default: '' },
-        image: { type: String, required },
+        image: { type: String },
+        slug: { type: String, slug: 'name' },
+        id_Teacher: { type: String, default: 'admin' },
     },
     {
         _id: false,
         timestamps: true,
     },
 );
-
+// plugins
 mongoose.plugin(slug);
-mongoose.plugin(sequence);
+Courses.plugin(sequence);
 mongoose.plugin(mongooseDelete, {
     deleteAt: true, // time delete
     overrideMethods: true, // override methods(ghi đè lên các phương thức cũ )
 });
 
-module.exports = Courses;
+module.exports = mongoose.model('Courses', Courses);

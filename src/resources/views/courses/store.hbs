@@ -1,0 +1,57 @@
+<form class='container' method='POST' action='/course/create' enctype='multipart/form-data'>
+    <div class='mb-3'>
+        <label for='exampleFormControlInput1' class='form-label'>Tên khóa học</label>
+        <input type='text' class='form-control' name="name" id='exampleFormControlInput1' />
+    </div>
+    <div class='mb-3'>
+        <label for='exampleFormControlTextarea1' class='form-label'>Nội Dung
+            Khóa Học</label>
+        <textarea
+            class='form-control'
+            id='exampleFormControlTextarea1'
+            rows='3'
+            name="description"
+        ></textarea>
+    </div>
+    <div class='mb-3'>
+        <label for='formFile' class='form-label'>chọn ảnh tải lên </label>
+        <input class='form-control' type='file' name="image" accept="image/*" enctype="multipart/form-data" id='formFile' />
+    </div>
+    <button type='submit' id="submit" class='btn btn-primary' disabled>Submit</button>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const textarea = document.getElementById('exampleFormControlTextarea1');
+        const Input = document.getElementById('exampleFormControlInput1');
+        const formFile = document.getElementById('formFile');
+        const submit = document.getElementById('submit');
+        
+        
+        let valueTextarea = '';
+        let valueInput = '';
+        let valueFromFile = null;
+        textarea.addEventListener("input", (e) => {
+            valueTextarea = e.target.value; 
+            handleDisabled();
+        });
+        Input.addEventListener("input", (e) => {
+            valueInput = e.target.value;
+            handleDisabled();
+        });
+        formFile.addEventListener("change", (e) => {
+            valueFromFile = e.target.files[0];
+            handleDisabled();
+        });
+        
+      
+    const handleDisabled = () => {
+        if (valueTextarea.trim() && valueInput.trim() && valueFromFile) {
+            submit.disabled = false;
+        } else {
+            submit.disabled = true;
+        }
+    };
+ 
+    })
+</script>

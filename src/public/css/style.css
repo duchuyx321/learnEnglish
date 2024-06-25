@@ -1,0 +1,18 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+body {
+    box-sizing: border-box;
+}
+.Logo {
+    width: 200px;
+    height: 50px;
+    margin-right: 26px;
+}
+.container {
+    padding: 0 !important;
+}
+.container-nav {
+    background-color: #aeb4b9;
+}
