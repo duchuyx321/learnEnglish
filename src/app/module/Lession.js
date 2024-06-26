@@ -15,8 +15,8 @@ const lessons = new Schema(
                 content: [
                     {
                         id_Lesson: { type: Number, required },
-                        name: { type: String, required },
-                        description: { type: String },
+                        title: { type: String, required },
+                        body: { type: String },
                     },
                 ],
             },
