@@ -7,7 +7,7 @@ class MeControllers {
             const instance = await Courses.find();
             const course = multipliedMongooseToObject(instance);
 
-            res.render('me/storedCourse', { course });
+            res.json({ course });
         } catch (err) {
             res.json(err);
         }

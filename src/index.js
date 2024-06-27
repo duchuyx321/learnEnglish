@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars').engine;
 const methodOverride = require('method-override');
+const cookieParser = require('cookie-parser');
 
 const routes = require('./routers');
 const db = require('./config/db');
@@ -13,7 +14,8 @@ const port = 5000;
 db.connect();
 // method overrides
 app.use(methodOverride('_method'));
-
+// cookie
+app.use(cookieParser()); // cung cấp các thứ về cookie
 // file tĩnh
 app.use(express.static(path.join(__dirname, 'public')));
 
