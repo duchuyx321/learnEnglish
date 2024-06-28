@@ -4,7 +4,7 @@ class LessonController {
     // [POST] ---/lesson/create
     async create(req, res, next) {
         try {
-            const lesson = await new Lesson(req.body);
+            const lesson = new Lesson(req.body);
             await lesson.save();
 
             res.status(200).json({ message: 'create lesson successfully' });

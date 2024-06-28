@@ -6,7 +6,6 @@ const sequence = require('mongoose-sequence')(mongoose);
 const Schema = mongoose.Schema;
 const Lesson = new Schema(
     {
-        id_course: { type: Number },
         lessons: [
             {
                 id: { type: Number },

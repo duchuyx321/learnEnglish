@@ -1,0 +1,47 @@
+<form method="POST" action="/auth/login">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nhập username</label>
+        <input
+            type="text"
+            name="username"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Nhập username"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Nhập password</label>
+        <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="exampleFormControlInput2"
+            placeholder="Nhập password"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Đăng nhập</button>
+</form>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => { 
+        const username = document.getElementById("exampleFormControlInput1");
+        const password = document.getElementById("exampleFormControlInput2");
+        const submitBtn = document.getElementById("submitBtn");
+
+        const submitButton = () => {
+                if(username.value && password.value){
+                    submitBtn.disabled = false;
+                }else {
+                    submitBtn.disabled = true;
+                }
+        }
+        username.addEventListener("input", (e) => {
+                submitButton();
+        });
+        password.addEventListener("input", (e) => {
+                submitButton();
+        })
+    
+    })
+</script>

@@ -44,7 +44,8 @@ class AuthController {
                 sameSite: 'strict', // cho phép gửi gì đó lên
             });
             const { password, ...others } = user._doc;
-            res.json({ ...others, accessToken });
+            res.redirect("/");
+            // res.json({ ...others, accessToken });
         } catch (err) {
             res.status(404).json({ message: err.message, next: next });
         }
@@ -84,6 +85,15 @@ class AuthController {
             res.status(200).json({ message: 'logout successful' });
         } catch (err) {
             res.json({ message: err.message, next });
+        }
+    }
+
+    // [GET] --/auth/post
+    async post(req, res, next) {
+        try {
+            res.render('fromLogin/FormLogin');
+        } catch (err) {
+            res.status(500).send({ message: err.message, next });
         }
     }
 }

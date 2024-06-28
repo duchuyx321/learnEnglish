@@ -37,6 +37,11 @@ app.engine(
     'hbs',
     handlebars({
         extname: '.hbs',
+        helpers: {
+            isCookie: (cookieName) => {
+                return !!(this && this.cookies && this.cookies[cookieName]);
+            },
+        },
     }),
 );
 app.set('view engine', 'hbs');

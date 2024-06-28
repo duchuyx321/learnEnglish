@@ -5,7 +5,7 @@ class contentController {
     // [POST] ---/content/create
     async create(req, res, next) {
         try {
-            const content = await new Content(req.body);
+            const content = new Content(req.body);
             await content.save();
 
             res.status(200).json(content);

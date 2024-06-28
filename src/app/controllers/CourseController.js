@@ -1,14 +1,14 @@
 const Courses = require('../module/Courses');
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require('cloudinary').v2;
 
 class CourseController {
     //[GET] /course/store
     async courseStore(req, res, next) {
         try {
             const course = await Courses.find();
-            res.render('courses/store');
+            res.render('courses/store', { course });
         } catch (err) {
-            res.status(500).json({ message: err,next });
+            res.status(500).json({ message: err, next });
         }
     }
 
@@ -27,12 +27,9 @@ class CourseController {
             res.status(200).json(req.body);
         } catch (error) {
             console.error('Error uploading file:', error);
-            if(req.file){
-
+            if (req.file) {
             }
-            res.status(500).json({ message: 'Internal server error' ,
-                next,
-            });
+            res.status(500).json({ message: 'Internal server error', next });
         }
     }
 }

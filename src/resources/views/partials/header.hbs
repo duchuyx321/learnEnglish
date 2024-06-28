@@ -24,40 +24,48 @@
                         type='submit'
                     >Search</button>
                 </form>
-
-                <ul class='navbar-nav mb-2 mb-lg-0'>
-                    <li class='nav-item dropdown'>
-                        <a
-                            class='nav-link dropdown-toggle'
-                            href='#'
-                            id='navbarDropdown'
-                            role='button'
-                            data-bs-toggle='dropdown'
-                        >
-                            <img />
-                        </a>
-                        <ul
-                            class='dropdown-menu'
-                            aria-labelledby='navbarDropdown'
-                        >
-                            <li><a
-                                    class='dropdown-item'
-                                    href='course/store'
-                                >Thêm Khóa Học</a></li>
-                            <li><a
-                                    class='dropdown-item'
-                                    href='/me/stored/courses'
-                                >Khóa Học Đã Đăng</a></li>
-                            <li><a
-                                    class='dropdown-item'
-                                    href='/me/stored/courses'
-                                >Khóa học đang theo</a></li>
-                            <li><hr class='dropdown-divider' /></li>
-                            <li><a class='dropdown-item' href='#'>Đăng xuất
-                                </a></li>
-                        </ul>
-                    </li>
-                </ul>
+                {{#if (isCookie 'refreshToken')}}
+                    <ul class='navbar-nav mb-2 mb-lg-0'>
+                        <li class='nav-item dropdown'>
+                            <a
+                                class='nav-link dropdown-toggle'
+                                href='#'
+                                id='navbarDropdown'
+                                role='button'
+                                data-bs-toggle='dropdown'
+                            >
+                                mở rộng
+                            </a>
+                            <ul
+                                class='dropdown-menu'
+                                aria-labelledby='navbarDropdown'
+                            >
+                                <li><a
+                                        class='dropdown-item'
+                                        href='course/store'
+                                    >Thêm Khóa Học</a></li>
+                                <li><a
+                                        class='dropdown-item'
+                                        href='/me/stored/courses'
+                                    >Khóa Học Đã Đăng</a></li>
+                                <li><a
+                                        class='dropdown-item'
+                                        href='/me/stored/courses'
+                                    >Khóa học đang theo học</a></li>
+                                <li><hr class='dropdown-divider' /></li>
+                                <li><a class='dropdown-item' href='#'>Đăng xuất
+                                    </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                {{else}}
+                    <a
+                        type='button'
+                        href='auth/post'
+                        class='btn btn-secondary'
+                    >Đăng nhập
+                    </a>
+                {{/if}}
             </div>
         </div>
     </nav>

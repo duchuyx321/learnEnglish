@@ -6,8 +6,8 @@ class HomeController {
         try {
             const instance = await Courses.find();
             const course = multipliedMongooseToObject(instance);
-
-            res.json({ course });
+            res.render('home', { course });
+            // res.json({ course });
         } catch (err) {
             next(err);
         }
