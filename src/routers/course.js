@@ -10,5 +10,6 @@ router.post(
     uploadFileMiddleware.single('image'),
     CourseController.create,
 );
+router.get('/:slug', CourseController.lessonCourse);
 
 module.exports = router;

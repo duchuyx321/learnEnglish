@@ -24,7 +24,7 @@
                         type='submit'
                     >Search</button>
                 </form>
-                {{#if (isCookie 'refreshToken')}}
+                {{#if isCookie}}
                     <ul class='navbar-nav mb-2 mb-lg-0'>
                         <li class='nav-item dropdown'>
                             <a
@@ -53,8 +53,18 @@
                                         href='/me/stored/courses'
                                     >Khóa học đang theo học</a></li>
                                 <li><hr class='dropdown-divider' /></li>
-                                <li><a class='dropdown-item' href='#'>Đăng xuất
-                                    </a></li>
+                                <li>
+                                    <form action='/auth/logout' method='POST'>
+                                        <button
+                                            type='submit'
+                                            class='dropdown-item'
+                                            id='btnLogout'
+                                            href='/auth/logout'
+                                        >
+                                            Đăng xuất
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                     </ul>

@@ -1,5 +1,5 @@
 const Courses = require('../module/Courses');
-const cloudinary = require('cloudinary').v2;
+const Lessons = require('../module/Lesson');
 
 class CourseController {
     //[GET] /course/store
@@ -12,6 +12,15 @@ class CourseController {
         }
     }
 
+    // [GET] /course/:slug?id=:_id
+    async lessonCourse(req, res, next) {
+        try {
+            const lesson = await Lessons.findOne({ id: req.query.id });
+            res.json(lesson);
+        } catch (err) {
+            res.status(404).json({ message: err, next });
+        }
+    }
     // [POST] /course/create
     async create(req, res, next) {
         try {

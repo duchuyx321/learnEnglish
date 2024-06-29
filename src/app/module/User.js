@@ -23,6 +23,9 @@ const User = new Schema(
             required: true,
             minlength: 8,
         },
+        image : {
+            type: String,
+        },
         admin: {
             type: Boolean,
             default: false,

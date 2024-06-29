@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const routes = require('./routers');
 const db = require('./config/db');
+const checkCookie = require('./util/checkCookies');
 
 const app = express();
 const port = 5000;
@@ -38,15 +39,16 @@ app.engine(
     handlebars({
         extname: '.hbs',
         helpers: {
-            isCookie: (cookieName) => {
-                return !!(this && this.cookies && this.cookies[cookieName]);
-            },
-        },
+            isCookie: (req,res) => {
+                !!(res.cookie && res.cookie.refreshToken);
+            }
+        }
     }),
 );
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
+// kiểm tra cookies
+app.use(checkCookie);
 // routers
 routes(app);
 

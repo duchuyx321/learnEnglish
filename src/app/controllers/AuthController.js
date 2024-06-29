@@ -8,13 +8,18 @@ class AuthController {
     // [POST] --/auth/register
     async register(req, res, next) {
         try {
+            if (!req.file) {
+                res.status(400).json({ message: 'not upload img' });
+            }
+            const fileData = req.file.path;
+            req.body.image = fileData;
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(req.body.password, salt);
             req.body.password = hash;
             const user = new User(req.body);
             await user.save();
-            const { passwords, ...users } = user;
-            res.json(users);
+            const { password, ...others } = user._doc;
+            res.json(others);
         } catch (err) {
             res.status(500).json({ message: err.message, next });
         }
@@ -44,8 +49,9 @@ class AuthController {
                 sameSite: 'strict', // cho phép gửi gì đó lên
             });
             const { password, ...others } = user._doc;
-            res.redirect("/");
-            // res.json({ ...others, accessToken });
+            const JsonLogin = { ...others, accessToken };
+            res.redirect('/');
+            // res.json();
         } catch (err) {
             res.status(404).json({ message: err.message, next: next });
         }
@@ -82,7 +88,8 @@ class AuthController {
     async logout(req, res, next) {
         try {
             await res.clearCookie('refreshToken');
-            res.status(200).json({ message: 'logout successful' });
+            res.redirect('back');
+            // res.status(200).json({ message: 'logout successful' });
         } catch (err) {
             res.json({ message: err.message, next });
         }
