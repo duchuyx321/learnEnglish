@@ -1,0 +1,53 @@
+<div class='container d-flex gap-5'>
+    <div class='container-wrapper'>
+        <h1 class='container-title'>{{course.name}} </h1>
+        <div class='container-description'>{{course.description}}</div>
+        <h4 class='container-title'>{{lesson.name}} </h4>
+        <div class='container-description'>{{lesson.description}}</div>
+        <div class='accordion mt-3' id='accordionExample'>
+            <div class='accordion-item'>
+                <h2 class='accordion-header' id='headingOne'>
+                    <button
+                        class='accordion-button'
+                        type='button'
+                        data-bs-toggle='collapse'
+                        data-bs-target='#collapseOne'
+                        aria-expanded='true'
+                        aria-controls='collapseOne'
+                    >
+                        {{lesson.name}}
+                    </button>
+                </h2>
+                <div
+                    id='collapseOne'
+                    class='accordion-collapse collapse show'
+                    aria-labelledby='headingOne'
+                    data-bs-parent='#accordionExample'
+                >
+                    {{#each lesson.contents}}
+                        <div class='alert alert-primary mt-3'>
+                            {{this.title}}
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='container-card'>
+        <div class='card' style='width: 18rem;'>
+            <img
+                src={{course.image}}
+                class='card-img-top'
+                alt={{course.slug}}
+            />
+            <div class='card-body'>
+                <h5 class='card-title'>{{course.name}}</h5>
+                <p class='card-text'>{{course.description}}</p>
+                <a
+                    href='/course/{{course.slug}}/{{lesson.id}}'
+                    class='btn btn-primary'
+                >Đăng kí khóa học</a>
+            </div>
+        </div>
+    </div>
+</div>

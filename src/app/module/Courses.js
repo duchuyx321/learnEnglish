@@ -13,6 +13,7 @@ const Courses = new schema(
         image: { type: String },
         slug: { type: String, slug: 'name' },
         id_Teacher: { type: String, default: 'admin' },
+        follow: { type: Boolean, default: false },
     },
     {
         _id: false,

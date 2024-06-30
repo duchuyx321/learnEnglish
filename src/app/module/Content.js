@@ -5,7 +5,7 @@ const sequence = require('mongoose-sequence')(mongoose);
 
 const Schema = mongoose.Schema;
 
-const Content = new Schema(
+const Contents = new Schema(
     {
         id_content: { type: Number },
         content: [
@@ -22,11 +22,11 @@ const Content = new Schema(
 );
 // plugins
 mongoose.plugin(slug);
-Content.plugin(sequence, { inc_field: 'id_content' });
-Content.plugin(sequence, { inc_field: 'id_' });
+Contents.plugin(sequence, { inc_field: 'id_content' });
+Contents.plugin(sequence, { inc_field: 'id_' });
 mongoose.plugin(mongooseDelete, {
     deleteAt: true,
     overrideMethods: true,
 });
 
-module.exports = mongoose.model('Content', Content);
+module.exports = mongoose.model('Contents', Contents);

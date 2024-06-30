@@ -1,0 +1,16 @@
+<div class='container'>
+    <div class='container-wrapper'>
+        <div class='container-wrapper-content'>
+            <div class='content-vocabulary'><h2>hello</h2></div>
+            <div class='content-vietnamese'><h2>Xin chào </h2></div>
+        </div>
+    </div>
+    <div class='accordion accordion-flush' id='accordionFlushExample'>
+        <h5 id='container-title'>Nội dung khóa học</h5>
+        {{#each lesson.contents}}
+            <div class='alert alert-dark'>
+                {{this.title}}
+            </div>
+        {{/each}}
+    </div>
+</div>
