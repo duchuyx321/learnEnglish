@@ -1,11 +1,32 @@
-<div class='container'>
-    <div class='container-wrapper'>
-        <div class='container-wrapper-content'>
-            <div class='content-vocabulary'><h2>hello</h2></div>
-            <div class='content-vietnamese'><h2>Xin chào </h2></div>
+<div class='container d-flex'>
+    <div
+        class='border  col-8 gap-1 d-flex justify-content-center align-items-center'
+    >
+        <div class=' col-8' id='container-content'>
+            <div class="container-content-wrapper">
+                <div class="content-wrapper d-flex">
+                        {{#each contents.content}}
+                            <div class='content d-flex flex-column col-5 '>
+                                <div class='content-vocabulary mb-5'><h2>{{this.vocabulary}}</h2></div>
+                                <div class='content-vietnamese'><h2>{{this.vietnamese}}</h2></div>
+                            </div>
+                        {{/each}}
+                </div>
+            </div>
+            <button class="btn-left" style="opacity: 0;"><i class="fa-solid fa-circle-chevron-left"></i></button>
+            <button class="btn-right"><i class="fa-solid fa-circle-chevron-right"></i></button>
+
+            <div class='content-icon'>
+                <button class="btn-play" id="btn-icon">
+                    <i class='fa-solid fa-play' id="iconPlay" ></i>
+                </button>
+                <button class="btn-pause" id="btn-icon" hidden>
+                    <i class='fa-solid fa-pause' id="iconPause" ></i>
+                </button>
+            </div>
         </div>
     </div>
-    <div class='accordion accordion-flush' id='accordionFlushExample'>
+    <div class='accordion accordion-flush ms-5' id='accordionFlushExample'>
         <h5 id='container-title'>Nội dung khóa học</h5>
         {{#each lesson.contents}}
             <div class='alert alert-dark'>
@@ -14,3 +35,52 @@
         {{/each}}
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btnPlay = document.querySelector(".btn-play")
+        const btnPause = document.querySelector(".btn-pause");
+        const btnLeft = document.querySelector(".btn-left");
+        const btnRight = document.querySelector(".btn-right");
+        const content = document.querySelector(".content-wrapper");
+        const contents = document.querySelectorAll(".content");
+
+        let currentIndex = 0 ;
+        let lengthContent = contents.length;
+
+        btnPlay.addEventListener("click", () => {
+            btnPlay.hidden = true;
+            btnPause.hidden = false;
+        });
+        btnPause.addEventListener("click", () => {
+            btnPlay.hidden = false;
+            btnPause.hidden = true;
+        });
+        // Xử lý khi click vào nút điều hướng sang trái
+        btnLeft.addEventListener('click', () => {
+            if(currentIndex < 0) {
+                currentIndex +=1;
+                content.style.transform = `translateX(${currentIndex*100}%)`;
+            }
+            if(currentIndex == 0) {
+                btnLeft.style.opacity = 0;
+            }
+
+        });
+
+        // Xử lý khi click vào nút điều hướng sang phải
+        btnRight.addEventListener('click', () => {
+            if(currentIndex == -lengthContent+2) {
+                btnRight.style.opacity = 0;
+            }
+            if(currentIndex  < lengthContent-1){
+                console.log(currentIndex);
+
+                currentIndex -=1;
+                content.style.transform = `translateX(${currentIndex*100}%)`;
+                btnLeft.style.opacity = 1;
+
+            }
+        });
+    });
+</script>

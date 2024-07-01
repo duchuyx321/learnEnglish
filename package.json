@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node node_modules/nodemon/bin/nodemon.js --inspect src/index.js",
+        "watch": "node ./node_modules/node-sass/bin/node-sass.js --watch src/resources/scss/ --output src/public/css/",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

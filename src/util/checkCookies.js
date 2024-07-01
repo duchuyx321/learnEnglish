@@ -6,5 +6,11 @@ const CheckCookie = (req, res, next) => {
     }
     next();
 };
-
-module.exports = CheckCookie;
+const AlertCookie = (req, res, next) => {
+    if (req.cookies && req.cookies.refreshToken) {
+        next();
+    } else {
+        res.status(300).json({ message: 'Vui lòng đăng nhập' });
+    }
+};
+module.exports = { CheckCookie, AlertCookie };

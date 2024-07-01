@@ -1,18 +1,62 @@
 html {
-    padding: 0;
-    margin: 0;
-}
+  padding: 0;
+  margin: 0; }
+
 body {
-    box-sizing: border-box;
-}
+  box-sizing: border-box; }
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent; }
+
 .Logo {
-    width: 200px;
-    height: 50px;
-    margin-right: 26px;
-}
+  width: 200px;
+  height: 50px;
+  margin-right: 26px; }
+
 .container {
-    padding: 0 !important;
-}
+  padding: 0 !important; }
+
 .container-nav {
-    background-color: #aeb4b9;
-}
+  background-color: #aeb4b9; }
+
+#container-content {
+  height: 60%;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #333; }
+
+.container-content-wrapper {
+  height: 85%;
+  overflow: hidden; }
+
+.content-wrapper {
+  height: 100%; }
+
+.content-icon {
+  font-size: 30px; }
+
+.content {
+  width: 100%;
+  justify-content: center;
+  align-items: center; }
+
+.btn-left {
+  position: absolute;
+  font-size: 40px;
+  left: -50px;
+  top: 45%;
+  z-index: 10;
+  color: #aeb4b9; }
+
+.btn-right {
+  position: absolute;
+  right: -50px;
+  font-size: 40px;
+  top: 44%;
+  z-index: 10;
+  color: #aeb4b9; }
